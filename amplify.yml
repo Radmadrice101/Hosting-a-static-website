@@ -1,30 +1,12 @@
 version: 1
-env:
-  - name: NODE_ENV
-    value: production
-backend:
-  phases:
-    build:
-      commands:
-        - npm ci
-        - npx ampx generate outputs --branch $AWS_BRANCH
 frontend:
   phases:
-    preBuild:
-      commands:
-        - echo "Deploying static website to Amplify..."
     build:
       commands:
-        - echo "Static website ready"
+        - echo "Building static website..."
   artifacts:
     baseDirectory: .
     files:
       - index.html
-  excludedFiles:
-    - node_modules/**/*
-    - amplify/**/*
-    - package.json
-    - package-lock.json
-    - .git/**/*
-    - .gitignore
-    - README.md
+  cache:
+    paths: []
