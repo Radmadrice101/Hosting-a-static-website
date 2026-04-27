@@ -1,0 +1,23 @@
+version: 1
+env:
+  - name: NODE_ENV
+    value: production
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci
+        - npx ampx generate outputs --branch $AWS_BRANCH
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Building static website..."
+  artifacts:
+    baseDirectory: /
+    files:
+      - index.html
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

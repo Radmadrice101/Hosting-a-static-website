@@ -4,7 +4,9 @@
   "description": "git init git add . git commit -m \"first commit\" git remote add origin git@github.com:Radmadrice101/staticwebsite.git git branch -M main git push -u origin main",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'Build completed'",
+    "generate": "npx ampx generate outputs"
   },
   "repository": {
     "type": "git",
