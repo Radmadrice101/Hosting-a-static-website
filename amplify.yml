@@ -10,14 +10,21 @@ backend:
         - npx ampx generate outputs --branch $AWS_BRANCH
 frontend:
   phases:
+    preBuild:
+      commands:
+        - echo "Deploying static website to Amplify..."
     build:
       commands:
-        - echo "Building static website..."
+        - echo "Static website ready"
   artifacts:
-    baseDirectory: /
+    baseDirectory: .
     files:
       - index.html
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
+  excludedFiles:
+    - node_modules/**/*
+    - amplify/**/*
+    - package.json
+    - package-lock.json
+    - .git/**/*
+    - .gitignore
+    - README.md
